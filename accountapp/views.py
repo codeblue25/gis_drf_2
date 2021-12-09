@@ -11,6 +11,13 @@ def hello_world_template(request):
 
 
 # 로직 처리하는 view
-@api_view()
+@api_view(['GET', 'POST'])
 def hello_world(request):
+
+    # POST 방식
+    if request.method == 'POST':
+        input_data = request.data.get('input_data')
+        return Response({'message': input_data})
+
+    # GET 방식
     return Response({'message': 'Return Text'})
