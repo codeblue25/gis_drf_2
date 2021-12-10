@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -9,24 +10,6 @@
     <h1 id="text">Hello World!</h1>
 
 </body>
-<script>
-
-    <!--  서버 호출 함수  -->
-    function send_input() {
-        axios.post('/accounts/hello_world/', {
-            input_data: document.getElementById('input_data').value,
-          })
-          .then(function (response) {
-            // POST 요청이 성공했을 경우 어떤 JS가 구동되어야하는지
-            console.log(response);
-
-            document.getElementById('text').innerHTML = response.data['message']; // Return text
-
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-    }
-</script>
+<script src="{% static 'JS/hello_world.js' %}"></script>
 
 {% endblock %}
