@@ -8,6 +8,11 @@ function send_input() {
 
         document.getElementById('text').innerHTML = response.data['text']; // Return text
         document.getElementById('new_model_created_at').innerHTML = response.data['created_at'];
+
+        document.getElementById('new_model_list').innerHTML
+                 += '<h5>' + response.data['text'] + '</h5>'
+        document.getElementById('new_model_list').innerHTML
+                 += '<p>' + response.data['created_at'] + '</p>'
       })
       .catch(function (error) {
         console.log(error);
