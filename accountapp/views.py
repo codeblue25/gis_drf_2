@@ -6,6 +6,12 @@ from rest_framework.response import Response
 
 
 # UI 설정부분(템플릿) 처리하는 view
+from serializers import serializer
+
+from accountapp.models import NewModel
+from accountapp.serializers import NewModelSerializer
+
+
 def hello_world_template(request):
     return render(request, 'accountapp/hello_world.html')
 
@@ -17,7 +23,15 @@ def hello_world(request):
     # POST 방식
     if request.method == 'POST':
         input_data = request.data.get('input_data')
-        return Response({'message': input_data})
+
+        new_model = NewModel()
+        new_model.text = input_data
+        new_model.save()
+
+        # Serialize 부분
+        serializer = NewModelSerializer(new_model)
+
+        return Response(serializer.data)
 
     # GET 방식
     return Response({'message': 'Return Text'})
