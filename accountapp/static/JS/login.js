@@ -10,7 +10,10 @@ function send_input() {
         document.getElementById('alert_box').innerHTML
                  += "<div class='btn btn-primary rounded-pill px-5 mb-3'>로그인을 성공했습니다. </div>";
 
-        window.location.href = '/accounts/hello_world_template/';
+        // Token 수령 후 쿠키 생성
+        document.cookie = "drf_token=Token " + response.data['token'];
+
+//        window.location.href = '/accounts/hello_world_template/';
 
       })
       .catch(function (error) {
