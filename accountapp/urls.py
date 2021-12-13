@@ -11,5 +11,5 @@ urlpatterns = [
     path('hello_world/', hello_world, name='hello_world'),
 
     path('create_template/', AccountCreateTemplate, name='create_template'),
-    path('crate/', AccountCreateAPIView.as_view(), name='create'),
+    path('create/', AccountCreateAPIView.as_view(), name='create'),
 ]
