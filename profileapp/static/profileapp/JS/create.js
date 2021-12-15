@@ -19,10 +19,8 @@ function send_input() {
         console.log(response);
 
         // 완성된 이후 해당 유저의 detail 페이지로 리다이렉트
-    //         window.location.href = '/accounts/retrieve_template/' + ;
+        window.location.href = '/accounts/retrieve_template/' + response.data['owner']['id'];
 
-        document.getElementById('alert_box').innerHTML
-                 += "<div class='btn btn-danger rounded-pill px-5'> 띠용 ~. </div>"
       })
       .catch(function (error) {
         // 실패했을 경우
