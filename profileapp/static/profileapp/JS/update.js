@@ -1,11 +1,11 @@
 function initialize(pk) {
-    axios.get('/accounts/' + pk)
+    axios.get('/profiles/' + pk)
       .then(function (response) {
         // handle success
         console.log(response);
 
-        document.getElementById('username').value = response.data['username'];
-        document.getElementById('email').value = response.data['email'];
+        document.getElementById('nickname').value = response.data['nickname'];
+        document.getElementById('message').value = response.data['message'];
 
       })
       .catch(function (error) {
@@ -17,14 +17,16 @@ function initialize(pk) {
       });
 };
 
-function update_account(pk) {
+function update_profile(pk) {
+    var form = new FormData()
+    form.append('nickname', document.getElementById('nickname').value)
+    form.append('message', document.getElementById('message').value)
+    form.append('image', document.getElementById('image').files[0])
+
     axios({
         method: 'patch',
-        url: '/accounts/' + pk,
-        data: {
-            username: document.getElementById('username').value,
-            email: document.getElementById('email').value,
-        },
+        url: '/profiles/' + pk,
+        data: form,
         headers: {
             Authorization: decodeURIComponent(getCookie('drf_token')),
         }
@@ -34,7 +36,7 @@ function update_account(pk) {
         // handle success
         console.log(response);
 
-        window.location.href = '/accounts/retrieve_template/' + pk;
+        window.location.href = '/accounts/retrieve_template/' + response.data['owner']['id'];
       })
       .catch(function (error) {
         // handle error

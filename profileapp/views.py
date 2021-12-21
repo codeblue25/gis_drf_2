@@ -25,6 +25,10 @@ class ProfileCreateAPIView(CreateAPIView):
         serializer.save(owner=self.request.user)
 
 
+class ProfileUpdateTemplateView(TemplateView):
+    template_name = 'profileapp/update.html'
+
+
 class ProfileUpdateAPIView(UpdateView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
