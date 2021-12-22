@@ -71,16 +71,13 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 venv/
-
 .env
-
 db.sqlite3
-
 .idea/
-
 __pycache__/
 /db_backup.sqlite3
-
 media/
 
 staticfiles/
+
+*.pem
