@@ -24,7 +24,7 @@ function initialize() {
                     "<img style=\"width: 100%; border-radius: 1rem;\"" +
                     " src=\"" + response.data['results'][i]['image'] + "\"" +
                     " alt=\"\">" +
-                    "</a>\"";
+                    "</a>";
             }
 
           //-----------------------------------------------------------------
