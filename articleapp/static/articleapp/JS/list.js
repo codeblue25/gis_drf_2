@@ -17,16 +17,14 @@ function initialize() {
             // handle success
             console.log(response);
 
-            for (let i=0; i<response.data['results'].length; i++;) {
-                document.getElementById('article_list').innerHTML
+            for (let i=0; i<response.data['results'].length; i++) {
+                document.getElementById('item' + i).innerHTML
                     +=
-                    "<div>" +
                     "<a href=\"/articles/retrieve_template/" + response.data['results'][i]['id'] + "\">" +
                     "<img style=\"width: 100%; border-radius: 1rem;\"" +
                     " src=\"" + response.data['results'][i]['image'] + "\"" +
                     " alt=\"\">" +
-                    "</a>\"" +
-                    "</div>";
+                    "</a>\"";
             }
 
           //-----------------------------------------------------------------
