@@ -32,6 +32,14 @@ class ArticleListCreateAPIView(ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(writer=self.request.user)
 
+    def post(self, request, *args, **kwargs):
+        """
+        주석 만들기 <br />
+        예: Article 생성 Endpoint <br />
+        HTML처럼 쓰면 됩니다
+        """
+        return super().post(request, *args, **kwargs)
+
 
 class ArticleRetrieveTemplateView(TemplateView):
     template_name = 'articleapp/retrieve.html'
